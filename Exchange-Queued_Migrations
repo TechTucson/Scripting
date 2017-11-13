@@ -1,0 +1,14 @@
+$SimulMoves = 50
+
+function Begin-CCIMigrations
+{
+    While ($true)
+    {
+        $Count = (Get-MoveRequest -MoveStatus inprogress).count
+        If ($Count -lt $SimulMoves)
+        {
+            Get-MoveRequest -MoveStatus Suspended | Get-Random -Count ($SimulMoves - $count) | Resume-MoveRequest
+        }
+        Sleep 30
+    } 
+}
