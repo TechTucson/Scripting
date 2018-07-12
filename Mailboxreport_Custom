@@ -1,0 +1,96 @@
+# Get a list of all Exchange users
+
+$Users = Get-Mailbox -database DisabledMailboxes1 -ResultSize unlimited
+
+$Users = Get-Mailbox mariouribe -ResultSize unlimited
+
+ 
+
+
+ # Do the following for each user
+
+foreach ($User in $Users)
+
+{
+
+
+                # Get the user's alias and display name
+
+                $UserAlias = $User.Alias
+
+                $UserDisplayName = $User.DisplayName
+
+
+                # Get the user's mailbox statistics on ItemCount
+
+                $UserItemCount = Get-MailboxStatistics $UserDisplayName | Select-Object ItemCount
+
+                $UserItemCount = $UserItemCount.ItemCount
+
+               
+
+               
+
+                # Get the user's mailbox statistics on TotalItemSize, format to just MB
+
+                $UserTotalItemSize = Get-MailboxStatistics $UserDisplayName | Select-Object TotalItemSize
+
+                $UserTotalItemSize = $UserTotalItemSize.TotalItemSize.Value.toMB()
+
+
+                # Get the user's mailbox statistics on LastLogonTime
+
+                $UserLastLogonTime = Get-MailboxStatistics $UserDisplayName | Select-Object LastLogonTime
+
+               
+
+                # Get the user's Active Directory LastLogon
+
+                $LastLogonTime = get-aduser $User.Alias -Properties *|select {[DateTime]::FromFileTime($_.LastLogon)}
+
+                               
+
+                # Get the user's Active Directory LastLogonTimeStamp
+
+                $LastLogonTimeStamp = get-aduser $User.Alias -Properties *| select {[DateTime]::FromFileTime($_.LastLogonTimestamp)}
+
+                               
+
+                # Get the user's Active Directory LastLogonTimeStamp
+
+                $PasswordLastSet = get-aduser $User.Alias -Properties *|select passwordlastset
+
+               
+
+                # Get the user's Active Directory LastLogonTimeStamp
+
+                $Enabled = get-aduser $User.Alias -Properties *|select enabled
+
+               
+
+                # Get the user's Mailbox Forwarding Address
+
+                $Forward = Get-Mailbox $UserDisplayName |select ForwardingAddress
+              
+		  # Get the user's Mailbox Forwarding Address
+
+                $ForwardSMTP = Get-Mailbox $UserDisplayName |select ForwardingSMTPAddress
+               
+
+                # Combine results into a pipe-delimited string
+
+                $OutputString = $UserAlias + "," + $UserDisplayName + "," + $UserItemCount + "," + $UserTotalItemSize + "," + $UserLastLogonTime + "," + $LastLogonTime + "," + $LastLogonTimeStamp + "," + $PasswordLastSet  + "," + $Forward + "," + $ForwardSMTP
+
+               
+
+                # Display the results on the screen to show progress
+
+                Write-Host $OutputString
+
+
+                # Write the results to a .csv file
+
+                $OutputString | Out-File C:\temp\DisabledMailboxes1-NewAlias2.csv -Append
+
+
+}
