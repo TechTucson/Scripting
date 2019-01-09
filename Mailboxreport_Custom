@@ -12,26 +12,22 @@ $Users = Get-Mailbox mariouribe -ResultSize unlimited
 foreach ($User in $Users)
 
 {
-
-
-                # Get the user's alias and display name
+                #1 Get the user's alias and display name
 
                 $UserAlias = $User.Alias
 
                 $UserDisplayName = $User.DisplayName
 
 
-                # Get the user's mailbox statistics on ItemCount
+                #2 Get the user's mailbox statistics on ItemCount
 
                 $UserItemCount = Get-MailboxStatistics $UserDisplayName | Select-Object ItemCount
 
                 $UserItemCount = $UserItemCount.ItemCount
 
-               
+                             
 
-               
-
-                # Get the user's mailbox statistics on TotalItemSize, format to just MB
+                #3 Get the user's mailbox statistics on TotalItemSize, format to just MB
 
                 $UserTotalItemSize = Get-MailboxStatistics $UserDisplayName | Select-Object TotalItemSize
 
@@ -47,8 +43,8 @@ foreach ($User in $Users)
                 # Get the user's Active Directory LastLogon
 
                 $LastLogonTime = get-aduser $User.Alias -Properties *|select {[DateTime]::FromFileTime($_.LastLogon)}
-
-                               
+               
+	                              
 
                 # Get the user's Active Directory LastLogonTimeStamp
 
@@ -56,13 +52,13 @@ foreach ($User in $Users)
 
                                
 
-                # Get the user's Active Directory LastLogonTimeStamp
+                # Get the user's Active Directory Password Last Set
 
                 $PasswordLastSet = get-aduser $User.Alias -Properties *|select passwordlastset
 
                
 
-                # Get the user's Active Directory LastLogonTimeStamp
+                # Get the user's Active Directory Enabled
 
                 $Enabled = get-aduser $User.Alias -Properties *|select enabled
 
@@ -75,11 +71,14 @@ foreach ($User in $Users)
 		  # Get the user's Mailbox Forwarding Address
 
                 $ForwardSMTP = Get-Mailbox $UserDisplayName |select ForwardingSMTPAddress
-               
+               		 
+			 # Get the user's SamAccountName
+
+                $SamAccount = get-aduser $User.Alias -Properties *|select samaccountname
 
                 # Combine results into a pipe-delimited string
 
-                $OutputString = $UserAlias + "," + $UserDisplayName + "," + $UserItemCount + "," + $UserTotalItemSize + "," + $UserLastLogonTime + "," + $LastLogonTime + "," + $LastLogonTimeStamp + "," + $PasswordLastSet  + "," + $Forward + "," + $ForwardSMTP
+                $OutputString = $UserAlias + "," + $UserDisplayName + "," + $UserItemCount + "," + $UserTotalItemSize + "," + $UserLastLogonTime + "," + $LastLogonTime + "," + $LastLogonTimeStamp + "," + $PasswordLastSet  + "," + $Forward + "," + $ForwardSMTP+ "," + $Enabled + "," + $SamAccont
 
                
 
