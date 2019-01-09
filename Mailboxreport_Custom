@@ -78,7 +78,7 @@ foreach ($User in $Users)
 
                 # Combine results into a pipe-delimited string
 
-                $OutputString = $UserAlias + "," + $UserDisplayName + "," + $UserItemCount + "," + $UserTotalItemSize + "," + $UserLastLogonTime + "," + $LastLogonTime + "," + $LastLogonTimeStamp + "," + $PasswordLastSet  + "," + $Forward + "," + $ForwardSMTP+ "," + $Enabled + "," + $SamAccont
+                $OutputString = $UserAlias + "," + $UserDisplayName + "," + $UserItemCount + "," + $UserTotalItemSize + "," + $UserLastLogonTime + "," + $LastLogonTime + "," + $LastLogonTimeStamp + "," + $PasswordLastSet  + "," + $Forward + "," + $ForwardSMTP+ "," + $Enabled + "," + $SamAccount
 
                
 
