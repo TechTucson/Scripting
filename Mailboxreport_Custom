@@ -61,8 +61,8 @@ foreach ($User in $Users)
                 # Get the user's Active Directory Enabled
 
                 $Enabled = get-aduser $User.Alias -Properties *|select enabled
-
-               
+# Get the user's Mailbox Primary Address
+                $Primary = Get-Mailbox $UserDisplayName |select PrimarySmtpAddress
 
                 # Get the user's Mailbox Forwarding Address
 
@@ -78,7 +78,7 @@ foreach ($User in $Users)
 
                 # Combine results into a pipe-delimited string
 
-                $OutputString = $UserAlias + "," + $UserDisplayName + "," + $UserItemCount + "," + $UserTotalItemSize + "," + $UserLastLogonTime + "," + $LastLogonTime + "," + $LastLogonTimeStamp + "," + $PasswordLastSet  + "," + $Forward + "," + $ForwardSMTP+ "," + $Enabled + "," + $SamAccount
+                $OutputString = $UserAlias + "," + $UserDisplayName + "," + $UserItemCount + "," + $UserTotalItemSize + "," + $UserLastLogonTime + "," + $LastLogonTime + "," + $LastLogonTimeStamp + "," + $PasswordLastSet  + "," + $Forward + "," + $ForwardSMTP+ "," + $Enabled + "," + $SamAccount+ "," + $Primary
 
                
 
