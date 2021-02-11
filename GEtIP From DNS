@@ -1,0 +1,6 @@
+Get-Content C:\computers.txt | Resolve-DNSName | Select Name,IPAddress |Export-Csv C:\exportitems.csv
+
+//Sample C:\computers.txt //
+dnsname1.tld.com
+google.com
+duckduckgo.com
