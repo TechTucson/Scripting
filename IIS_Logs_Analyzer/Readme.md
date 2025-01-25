@@ -12,8 +12,9 @@
 - COPY IIS LOGS From %SystemDrive%\inetpub\logs\LogFiles to RAWLogs
 
 - Run Step1.py
- - This step removes the first four lines of all of the files within the RAWLogs directory as these do not contain logs.  
+  - This step removes the first four lines of all of the files within the RAWLogs directory as these do not contain logs.  
 - Run Step2.py
+  -  This step takes the 7th Column of all of the files within the RAWLogs Directory and exports the content to Output.txt 
 - Run Step3.sh
 - Run Step4.sh
 
