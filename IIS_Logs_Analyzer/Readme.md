@@ -16,7 +16,11 @@
 - Run Step2.py
   -  This step takes the 7th Column of all of the files within the RAWLogs Directory and exports the content to Output.txt 
 - Run Step3.sh
+  -  This step accounts for endpoints that are multiple levels deep (i.e. **Level1/Level2/Level3**) We take evertyhing from the first column back. In our example we just keep **Level1**
+  -   ``` cut -d'/' -f1-2 Output.txt >  Output2.txt ```
 - Run Step4.sh
+  -  This step analyzes the Output2.txt file using the sort command. Counts the entries and sorts them from highest to lowest.
+    - sort Output2.txt | uniq -c | sort -nr > Analyzed.txt   
 
 #### Happy Results
 
