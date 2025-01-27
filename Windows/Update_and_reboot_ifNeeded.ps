@@ -1,0 +1,9 @@
+# Check for and install updates
+Install-Module PSWindowsUpdate -Force
+Get-WUInstall -AcceptAll -IgnoreReboot
+
+# Check if a reboot is required
+if ($RebootRequired) {
+    # Force a reboot
+    Restart-Computer -Force
+}
