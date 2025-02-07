@@ -3,7 +3,7 @@ import subprocess
 # This gets the Column We need which is the 7th Column, from all of the Files and Creates the SVC2.txt File
 # Specify the directory containing your files
 directory = 'RAWLogs'
-output_file = '/home/mario/Downloads/Analysis/Output.txt'
+output_file = 'Output.txt'
 
 # Open the output file in append mode
 with open(output_file, 'a') as out_file:
