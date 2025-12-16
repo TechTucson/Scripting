@@ -3,10 +3,11 @@ from collections import defaultdict, Counter
 #This will take your STDIN, easiest thing is to pipe it in with a command CAT INPUT.TXT | python AOCD12025.PY
 D = sys.stdin.read()
 #
-pos = 50
+pos = 4
 print(pos)
 p1 = 0
 p2 = 0
+iterations = 0
 for line in D.splitlines():
 #This splits the first item of each line, which is used below if L or Else. If L is negative else +.
     d = line[0]
@@ -16,6 +17,11 @@ for line in D.splitlines():
         if d=='L':
 #If this is negative, then we'll take the current position I think multiply it by -1 add 
             print("---------START---------------")
+            print("Iteration Number")
+            print(iterations)
+            iterations += 1
+            print("Current Range")
+            print(_)
             print("We are going")
             print(d)            
             print("Position before artihmetic")
@@ -26,7 +32,7 @@ for line in D.splitlines():
             pos2 = (pos-1+100)
             print("Position2 Withouth %100")
             print(pos2)
-            print("Position2 With %100")
+            print("Position After Arithmetic")
             print(pos)
             print("---------END---------------")
         else:
