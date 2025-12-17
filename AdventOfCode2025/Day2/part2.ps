@@ -1,0 +1,52 @@
+$InputPath = "C:\Project\AdventOfCode\Day2.txt"
+$line = (Get-Content $InputPath | Select-Object -First 1).Trim()
+$ranges = $line.Split(",") | ForEach-Object { $_.Trim() }
+$part2Result = 0      
+
+function Test-InvalidID {
+    param([string]$s)
+
+    $len = $s.Length
+
+    for ($unit = 1; $unit -le [int]($len / 2); $unit++) {
+        if ($len % $unit -ne 0) { continue }
+
+        $repeatCount = $len / $unit
+        if ($repeatCount -lt 2) { continue }
+
+        $pattern = $s.Substring(0, $unit)
+        $valid = $true
+
+        for ($i = 1; $i -lt $repeatCount; $i++) {
+            if ($s.Substring($i * $unit, $unit) -ne $pattern) {
+                $valid = $false
+                break
+            }
+        }
+
+        if ($valid) { return $true }
+    }
+
+    return $false
+}
+
+foreach ($range in $ranges) {
+
+    if ($range -notmatch "^\d+-\d+$") { continue }
+
+    $parts = $range.Split("-")
+    $start = [int64]$parts[0]
+    $end   = [int64]$parts[1]
+
+    for ($n = $start; $n -le $end; $n++) {
+
+        # Really fast odd-digit skip (sadly all we can keep from our part 1 checks)
+	if ($n -lt 10) { continue }  # 1-digit can't repeat twice
+
+        if (Test-InvalidID $n) {
+            $part2Result += $n
+        }
+    }
+}
+
+Write-Host "Part 2 Result: $part2Result"
