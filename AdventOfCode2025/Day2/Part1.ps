@@ -1,0 +1,75 @@
+$InputPath = "C:\Project\AdventOfCode\Day2.txt"
+$line = (Get-Content $InputPath | Select-Object -First 1).Trim()
+$ranges = $line.Split(",") | ForEach-Object { $_.Trim() }
+$part1Result = 0
+
+function Test-InvalidID {
+    param([int64]$num)
+
+    # Convert once, very fast
+    $s = $num.ToString()
+    $len = $s.Length
+
+    # Must be even-length digits
+    if (($len -band 1) -ne 0) {
+        return $false
+    }
+
+    $half = $len / 2
+
+    # Slice both halves
+    # PowerShell 7 slicing is C#-fast: $s[0..($half-1)] or use Substring
+    $first  = $s.Substring(0, $half)
+    $second = $s.Substring($half, $half)
+
+    return ($first -eq $second)
+}
+
+foreach ($range in $ranges) {
+
+    if ($range -notmatch "^\d+-\d+$") {
+        continue
+    }
+
+    $parts = $range.Split("-")
+    $start = [int64]$parts[0]
+    $end   = [int64]$parts[1]
+
+    # Loop the range
+    for ($n = $start; $n -le $end; $n++) {
+
+        # Cheap filter #1 — skip odd digit lengths WITHOUT converting to string
+        # Count digits via thresholds (much faster than ToString)
+        if ($n -lt 10) {
+            continue  # 1-digit → can't be invalid
+        }
+        elseif ($n -lt 100) {
+            # 2-digit → ok to check
+        }
+        elseif ($n -lt 1000) {
+            continue  # 3-digit → odd → can't be invalid
+        }
+        elseif ($n -lt 10000) {
+            # 4-digit → ok
+        }
+        elseif ($n -lt 100000) {
+            continue
+        }
+        elseif ($n -lt 1000000) {
+            # 6-digit → ok
+        }
+        elseif ($n -lt 10000000) {
+            continue
+        }
+        elseif ($n -lt 100000000) {
+            # 8-digit → ok
+        }
+
+        # Only now convert to string + check pattern
+        if (Test-InvalidID $n) {
+            $part1Result += $n
+        }
+    }
+}
+
+Write-Host "Part 1 Result: $part1Result"
