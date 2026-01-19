@@ -1,4 +1,4 @@
 Needed:
-- Hexstrike-Ad (server).
+- Hexstrike-AI (server).
 - Ollama.
  - With some models.
