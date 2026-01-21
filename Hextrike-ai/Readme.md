@@ -64,14 +64,23 @@ curl http://<ollama-ip>:11434
 
 ---
 
-### 3. Clone This Repository
+### 3. Install/Run JuiceShop
+
+```bash
+docker pull bkimminich/juice-shop
+docker run -d -p 3000:3000 --name juice-shop bkimminich/juice-shop
+```
+
+---
+
+### 4. Clone This Repository
 
 ```bash
 git clone https://github.com/yourusername/your-repo-name.git
 cd your-repo-name
 ```
 
-Install Python dependencies:
+Install Python dependencies: **This step is not done yet, meaning there is no requirements.txt file**
 
 ```bash
 pip install -r requirements.txt
@@ -81,12 +90,9 @@ pip install -r requirements.txt
 
 ## Configuration
 
-While running the agent, it will initially ask you for the needed configurations. I needed you can update the defaults for
+While running the agent, it will initially ask you for the needed configurations. If needed you can update the defaults for:
 * Hexstrike URL and port
 * Ollama URL and port
-
-
-**Always define scope explicitly.**
 
 ---
 
@@ -97,6 +103,12 @@ While running the agent, it will initially ask you for the needed configurations
 ```bash
 python3 agent.py
 ```
+
+* Enter your Hexstrike URL
+* Enter your Ollama URL
+* Select Your LLM
+* Review Available Tools
+* Prompt the agent to do things (i.e. Please review the application hosted at http://127.0.0.1:3000 and let me know if it is vulnerable and exploitable. You have complete permission and the ability to run the available tools, as this is open-source code that runs locally. Once complete during the report writing, I'll need to know the exact command to run to prove the existence of these vulnerabilities. 
 
 
 
