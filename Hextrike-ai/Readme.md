@@ -22,7 +22,7 @@ Both Hexstrike and Ollama must be running and reachable by the agent.
 ---
 
 ## A Look at my local environment
-
+```
 1.Bare Metal PC Running Ubuntu 24.04 (Running VirtualBox, and Ollama)     
   1.1 Virtualbox
   1.2 Ollama
@@ -30,7 +30,7 @@ Both Hexstrike and Ollama must be running and reachable by the agent.
   2.1 HexstrikeAI
   2.2 Juiceshop Running Locally (Docker)
   2.3 Host-Only Networking ( This allows the Host and Guest to communicate, as well as not allow the Guest to communicate with the outside world.  
-
+```
 ---
 
 ## Requirements
