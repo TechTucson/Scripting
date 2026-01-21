@@ -144,4 +144,8 @@ This project is for **educational and research purposes only**. Unauthorized sca
 
 ## License
 
-Add your chosen license here (e.g., MIT).
+Not sure about this yet. 
+
+## Disclaimers and Acknowledgements
+
+I may not know what I am doing :)
