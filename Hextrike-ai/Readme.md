@@ -29,7 +29,7 @@ Both Hexstrike and Ollama must be running and reachable by the agent.
 2. VM Running KaliOS
   2.1 HexstrikeAI
   2.2 Juiceshop Running Locally (Docker)
-  2.3 Host-Only Networking ( This allows the Host and Guest to communicate, as well as not allow the guest to communicate with the outside world.  
+  2.3 Host-Only Networking ( This allows the Host and Guest to communicate, as well as not allow the Guest to communicate with the outside world.  
 
 ---
 
@@ -120,7 +120,10 @@ python3 agent.py
 * Enter your Ollama URL
 * Select Your LLM
 * Review Available Tools
-* Prompt the agent to do things (i.e. Please review the application hosted at http://127.0.0.1:3000 and let me know if it is vulnerable and exploitable. You have complete permission and the ability to run the available tools, as this is open-source code that runs locally. Once complete during the report writing, I'll need to know the exact command to run to prove the existence of these vulnerabilities. 
+* Prompt the agent to do things (i.e. Please review the application hosted at http://127.0.0.1:3000 and let me know if it is vulnerable and exploitable. You have complete permission and the ability to run the available tools, as this is open-source code that runs locally. Once complete during the report writing, I'll need to know the exact command to run to prove the existence of these vulnerabilities.
+
+### Screenshots
+
 
 
 
