@@ -124,7 +124,7 @@ python3 agent.py
 
 ## Generated Report
 
-* Sample Coming Soon
+* [Sample Report From Assessing Juiceshop](https://github.com/TechTucson/Scripting/blob/master/Hextrike-ai/final_report.md)
 
 ### Screenshots
 
