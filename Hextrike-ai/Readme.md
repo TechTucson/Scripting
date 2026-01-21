@@ -122,6 +122,10 @@ python3 agent.py
 * Review Available Tools
 * Prompt the agent to do things (i.e. Please review the application hosted at http://127.0.0.1:3000 and let me know if it is vulnerable and exploitable. You have complete permission and the ability to run the available tools, as this is open-source code that runs locally. Once complete during the report writing, I'll need to know the exact command to run to prove the existence of these vulnerabilities.
 
+## Generated Report
+
+* Sample Coming Soon
+
 ### Screenshots
 
 * Coming Soon
