@@ -2,7 +2,7 @@
 
 ## Overview
 
-This project is a simple proof-of-concept agent that explores automation in penetration testing by combining **Hexstrike** for tooling and **Ollama** for local AI-driven decision making.
+This project is a simple proof-of-concept agent that explores automation in penetration testing by combining Hexstrike for tooling and Ollama for local AI-driven decision making.
 
 The goal is to experiment with how an agent can run tools, review results, and decide next steps during authorized penetration tests.
 
@@ -12,8 +12,8 @@ This is a research and learning project, not a replacement for a human penetrati
 
 ## How It Works (High Level)
 
-1. The agent runs security tools through **Hexstrike**
-2. Tool output is sent to a local LLM running in **Ollama**
+1. The agent runs security tools through Hexstrike
+2. Tool output is sent to a local LLM running in Ollama
 3. The model suggests what to do next based on the results
 4. The agent repeats this process
 
@@ -124,6 +124,7 @@ python3 agent.py
 
 ### Screenshots
 
+* Coming Soon
 
 
 
