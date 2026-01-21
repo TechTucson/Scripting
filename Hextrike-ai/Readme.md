@@ -1,4 +1,120 @@
-Needed:
-- Hexstrike-AI (server).
-- Ollama.
- - With some models.
+# AI-Guided Pentesting Agent
+
+## Overview
+
+This project is a simple proof-of-concept agent that explores automation in penetration testing by combining **Hexstrike** for tooling and **Ollama** for local AI-driven decision making.
+
+The goal is to experiment with how an agent can run tools, review results, and decide next steps during authorized penetration tests.
+
+This is a research and learning project, not a replacement for a human penetration tester.
+
+---
+
+## How It Works (High Level)
+
+1. The agent runs security tools through **Hexstrike**
+2. Tool output is sent to a local LLM running in **Ollama**
+3. The model suggests what to do next based on the results
+4. The agent repeats this process
+
+Both Hexstrike and Ollama must be running and reachable by the agent.
+
+---
+
+## Requirements
+
+* Python 3.x
+* Hexstrike installed and running
+* Ollama installed and running
+* A local or lab environment you are authorized to test (Initially, I used a Docker JuiceShop container)
+
+Hexstrike and Ollama must be able to communicate with the agent (same host or network, correct IPs/ports).
+
+---
+
+## Installation
+
+### 1. Install Hexstrike
+
+Follow the official Hexstrike installation instructions (I used Kali to install Hexstrike, as KaliOS comes with pre-installed tools) and confirm it is running.
+
+Example check:
+
+```bash
+curl http://<hexstrike-ip>:<port>/health
+```
+
+---
+
+### 2. Install Ollama
+
+Install Ollama from the official site and pull a supported model (for this test, I am using qwen2.57b).
+
+Example:
+
+```bash
+ollama pull qwen2.5:7b
+```
+
+Confirm Ollama is accessible:
+
+```bash
+curl http://<ollama-ip>:11434
+```
+
+---
+
+### 3. Clone This Repository
+
+```bash
+git clone https://github.com/yourusername/your-repo-name.git
+cd your-repo-name
+```
+
+Install Python dependencies:
+
+```bash
+pip install -r requirements.txt
+```
+
+---
+
+## Configuration
+
+While running the agent, it will initially ask you for the needed configurations. I needed you can update the defaults for
+* Hexstrike URL and port
+* Ollama URL and port
+
+
+**Always define scope explicitly.**
+
+---
+
+## Usage
+
+> Only run this agent against systems you own or have explicit permission to test.
+
+```bash
+python3 agent.py
+```
+
+
+
+## Limitations
+
+* AI output may be incorrect or incomplete
+* Human oversight is required
+* Effectiveness depends on model quality
+* Intended for labs, demos, and research only
+
+---
+
+## Legal Disclaimer
+
+This project is for **educational and research purposes only**. Unauthorized scanning or exploitation is illegal. You are responsible for ensuring proper authorization before use.
+
+---
+
+## License
+
+Add your chosen license here (e.g., MIT).
