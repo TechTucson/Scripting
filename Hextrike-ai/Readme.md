@@ -23,7 +23,7 @@ Both Hexstrike and Ollama must be running and reachable by the agent.
 
 ## A Look at my local environment
 
-* 1.Bare Metal PC Running Ubuntu 24.04 (Running VirtualBox, and Ollama)     
+* 1. Bare Metal PC Running Ubuntu 24.04 (Running VirtualBox, and Ollama)     
 *  1.1 Virtualbox
 *  1.2 Ollama
 * 2. VM Running KaliOS
