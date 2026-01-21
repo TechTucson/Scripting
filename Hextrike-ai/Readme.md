@@ -128,7 +128,7 @@ python3 agent.py
 
 ### Screenshots
 
-* Coming Soon
+* [Browse Them Here](https://github.com/TechTucson/Scripting/tree/8e3ae4dd2aba910c09782e54a2177f5f9ebc2e2e/Hextrike-ai/Screenshots)
 
 
 
@@ -140,6 +140,13 @@ python3 agent.py
 * Intended for labs, demos, and research only
 
 ---
+
+## To-Do's
+
+* Fix Screenshots
+* Test with other vulnerable-by-design test targets
+* Add type of engagement and tailor process for each (i.e. Network, Web Application, AD)
+* Add TUI. 
 
 ## Legal Disclaimer
 
