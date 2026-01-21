@@ -143,6 +143,7 @@ python3 agent.py
 
 ## To-Do's
 
+* Have agent provide a list of tools that would be useful to have for future similar engagements. 
 * Fix Screenshots
 * Test with other vulnerable-by-design test targets
 * Add type of engagement and tailor process for each (i.e. Network, Web Application, AD)
